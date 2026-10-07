@@ -1,0 +1,194 @@
+Last login: Tue Oct  6 20:11:40 on ttys011
+(base) julianalg@ferris ~ % START=$HISTCMD
+(base) julianalg@ferris ~ % echo 'Hello Bash!'
+Hello Bash!
+(base) julianalg@ferris ~ % pwd
+/Users/julianalg
+(base) julianalg@ferris ~ % cd Desktop
+(base) julianalg@ferris Desktop % mkdir bash-assignment
+(base) julianalg@ferris Desktop % cd bash-assignment
+(base) julianalg@ferris bash-assignment % touch README.md
+(base) julianalg@ferris bash-assignment % touch meaning-of-life.txt
+(base) julianalg@ferris bash-assignment % ls
+meaning-of-life.txt	README.md
+(base) julianalg@ferris bash-assignment % mv meaning-of-life.txt history.txt
+(base) julianalg@ferris bash-assignment % code .
+(base) julianalg@ferris bash-assignment % git init -b main
+Initialized empty Git repository in /Users/julianalg/Desktop/bash-assignment/.git/
+(base) julianalg@ferris bash-assignment % git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+	history.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) julianalg@ferris bash-assignment % git add .
+(base) julianalg@ferris bash-assignment % git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   README.md
+	new file:   history.txt
+
+(base) julianalg@ferris bash-assignment % git commit -m "initial commit"
+[main (root-commit) 8f9efea] initial commit
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+ create mode 100644 history.txt
+(base) julianalg@ferris bash-assignment % git switch -c new-feature
+Switched to a new branch 'new-feature'
+(base) julianalg@ferris bash-assignment % git branch
+  main
+* new-feature
+(base) julianalg@ferris bash-assignment % touch feature.txt
+(base) julianalg@ferris bash-assignment % ls
+feature.txt	history.txt	README.md
+(base) julianalg@ferris bash-assignment % echo 'lalalalalala' > feature.txt
+(base) julianalg@ferris bash-assignment % git add feature.txt
+(base) julianalg@ferris bash-assignment % ls
+feature.txt	history.txt	README.md
+(base) julianalg@ferris bash-assignment % git status
+On branch new-feature
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   feature.txt
+
+(base) julianalg@ferris bash-assignment % git commit -m "added feature"
+[new-feature 8ea0cb5] added feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+(base) julianalg@ferris bash-assignment % git switch main
+Switched to branch 'main'
+(base) julianalg@ferris bash-assignment % ls
+history.txt	README.md
+(base) julianalg@ferris bash-assignment % git merge new-feature
+Updating 8f9efea..8ea0cb5
+Fast-forward
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+(base) julianalg@ferris bash-assignment % git branch -d new-feature
+Deleted branch new-feature (was 8ea0cb5).
+(base) julianalg@ferris bash-assignment % git remote add origin https://github.com/gar-julian/codify-0.git
+(base) julianalg@ferris bash-assignment % git status
+On branch main
+nothing to commit, working tree clean
+(base) julianalg@ferris bash-assignment % git push -u origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 15 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 443 bytes | 443.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/gar-julian/codify-0.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+(base) julianalg@ferris bash-assignment % git switch -c conflict1
+Switched to a new branch 'conflict1'
+(base) julianalg@ferris bash-assignment % echo "This change came from conflict1"
+ > feature.txt
+(base) julianalg@ferris bash-assignment % git status
+On branch conflict1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   feature.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) julianalg@ferris bash-assignment % git add .
+(base) julianalg@ferris bash-assignment % git commit -m "conflict 1 change"
+[conflict1 3b03292] conflict 1 change
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(base) julianalg@ferris bash-assignment % git push -u origin conflict
+error: src refspec conflict does not match any
+error: failed to push some refs to 'https://github.com/gar-julian/codify-0.git'
+(base) julianalg@ferris bash-assignment % git push -u origin conflict1
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 15 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 352 bytes | 352.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'conflict1' on GitHub by visiting:
+remote:      https://github.com/gar-julian/codify-0/pull/new/conflict1
+remote:
+To https://github.com/gar-julian/codify-0.git
+ * [new branch]      conflict1 -> conflict1
+branch 'conflict1' set up to track 'origin/conflict1'.
+(base) julianalg@ferris bash-assignment % git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+(base) julianalg@ferris bash-assignment % git switch -c conflict2
+Switched to a new branch 'conflict2'
+(base) julianalg@ferris bash-assignment % echo "This change from conflict2." > f
+eature.txt
+(base) julianalg@ferris bash-assignment % git add .
+(base) julianalg@ferris bash-assignment % git commit -m "conflict2 changes"
+[conflict2 6621f87] conflict2 changes
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(base) julianalg@ferris bash-assignment % git push -u origin conflict2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 15 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 348 bytes | 348.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'conflict2' on GitHub by visiting:
+remote:      https://github.com/gar-julian/codify-0/pull/new/conflict2
+remote:
+To https://github.com/gar-julian/codify-0.git
+ * [new branch]      conflict2 -> conflict2
+branch 'conflict2' set up to track 'origin/conflict2'.
+(base) julianalg@ferris bash-assignment % git pull
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.88 KiB | 963.00 KiB/s, done.
+From https://github.com/gar-julian/codify-0
+   6621f87..d50ff45  conflict2  -> origin/conflict2
+   8ea0cb5..9df839c  main       -> origin/main
+Updating 6621f87..d50ff45
+Fast-forward
+ feature.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+(base) julianalg@ferris bash-assignment % touch .gitignore
+(base) julianalg@ferris bash-assignment % touch no-commit.txt
+(base) julianalg@ferris bash-assignment % git status
+On branch conflict2
+Your branch is up to date with 'origin/conflict2'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) julianalg@ferris bash-assignment % git add .
+(base) julianalg@ferris bash-assignment % git commit -m "added git ignore"
+[conflict2 147486f] added git ignore
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+(base) julianalg@ferris bash-assignment % touch history.txt
+(base) julianalg@ferris bash-assignment % fc -1 $START > history.txt
+fc: history events can't be executed backwards, aborted
+(base) julianalg@ferris bash-assignment % fc -1 $END > history.txt
+Vim: Warning: Output is not to a terminal
+fc -1 $START > history.txt
+fc: history events can't be executed backwards, aborted
+(base) julianalg@ferris bash-assignment % fc -1 $START > history.txt
+fc: history events can't be executed backwards, aborted
+(base) julianalg@ferris bash-assignment % fc -1 $START
+fc: history events can't be executed backwards, aborted
+(base) julianalg@ferris bash-assignment % ls
+feature.txt	history.txt	no-commit.txt	README.md
+(base) julianalg@ferris bash-assignment % history | tail -n 200 >> history.txt
