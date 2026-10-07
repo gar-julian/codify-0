@@ -1,1 +1,2 @@
+This change came from conflict2.
 This change came from conflict1
