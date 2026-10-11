@@ -1,0 +1,57 @@
+ 1001  echo 'Hello Bash!'
+ 1002  pwd
+ 1003  cd Desktop
+ 1004  mkdir bash-assignment
+ 1005  cd bash-assignment
+ 1006  touch README.md
+ 1007  touch meaning-of-life.txt
+ 1008  ls
+ 1009  mv meaning-of-life.txt history.txt
+ 1010  code .
+ 1011  git init -b main
+ 1012  git status
+ 1013  git add .
+ 1014  git status
+ 1015  git commit -m "initial commit"
+ 1016  git switch -c new-feature
+ 1017  git branch
+ 1018  touch feature.txt
+ 1019  ls
+ 1020  echo 'lalalalalala' > feature.txt
+ 1021  git add feature.txt
+ 1022  ls
+ 1023  git status
+ 1024  git commit -m "added feature"
+ 1025  git switch main
+ 1026  ls
+ 1027  git merge new-feature
+ 1028  git branch -d new-feature
+ 1029  git remote add origin https://github.com/gar-julian/codify-0.git
+ 1030  git status
+ 1031  git push -u origin main
+ 1032  git switch -c conflict1
+ 1033  echo "This change came from conflict1" > feature.txt
+ 1034  git status
+ 1035  git add .
+ 1036  git commit -m "conflict 1 change"
+ 1037  git push -u origin conflict
+ 1038  git push -u origin conflict1
+ 1039  git switch main
+ 1040  git switch -c conflict2
+ 1041  echo "This change from conflict2." > feature.txt
+ 1042  git add .
+ 1043  git commit -m "conflict2 changes"
+ 1044  git push -u origin conflict2
+ 1045  git pull
+ 1046  touch .gitignore
+ 1047  touch no-commit.txt
+ 1048  git status
+ 1049  git add .
+ 1050  git commit -m "added git ignore"
+ 1051  touch history.txt
+ 1052  fc -1 $START > history.txt
+ 1053  fc -1 $END > history.txt
+ 1054  fc -1 $START > history.txt
+ 1055  fc -1 $START
+ 1056  ls
+ 1057  history | tail -n 200 >> history.txt
